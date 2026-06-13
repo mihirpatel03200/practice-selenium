@@ -4,6 +4,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.Select;
+import org.testng.Assert;
 
 import java.time.Duration;
 import java.util.List;
@@ -31,6 +33,18 @@ public class practice4 {
                 break;
             }
         }
+
+        //Select dropdown
+        WebElement staticDropdown = driver.findElement(By.id("dropdown-class-example"));
+        Select dropdown = new Select(staticDropdown);
+        dropdown.selectByValue("option3");
+        Assert.assertEquals(dropdown.getFirstSelectedOption().getText(), "Option3");
+        dropdown.selectByIndex(1);
+        Assert.assertEquals(dropdown.getFirstSelectedOption().getText(), "Option1");
+        dropdown.selectByVisibleText("Option2");
+        Assert.assertEquals(dropdown.getFirstSelectedOption().getText(), "Option2");
+
+
 
     }
 }
