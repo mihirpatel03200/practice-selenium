@@ -4,7 +4,10 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
 import java.time.Duration;
@@ -44,6 +47,34 @@ public class practice4 {
         dropdown.selectByVisibleText("Option2");
         Assert.assertEquals(dropdown.getFirstSelectedOption().getText(), "Option2");
 
+        //Checking the checkbox
+        System.out.println(driver.findElements(By.xpath("//input[@type='checkbox']")).size());
+        driver.findElement(By.id("checkBoxOption1"));
+
+
+        //Alert box
+        driver.findElement(By.id("name")).sendKeys("Mihir Patel");
+        driver.findElement(By.id("alertbtn")).click();
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        wait.until(ExpectedConditions.alertIsPresent());
+        driver.switchTo().alert().accept();
+        //System.out.println(driver.switchTo().alert().getText());
+        for (int i = 0; i <= 1; i++) {
+            int j = i;
+
+            if (j == 0) {
+                driver.findElement(By.id("name")).sendKeys("Mihir Patel");
+                driver.findElement(By.id("confirmbtn")).click();
+                wait.until(ExpectedConditions.alertIsPresent());
+                driver.switchTo().alert().accept();
+            } else if (j == 1) {
+                driver.findElement(By.id("name")).sendKeys("Mihir Patel");
+                driver.findElement(By.id("confirmbtn")).click();
+                wait.until(ExpectedConditions.alertIsPresent());
+                driver.switchTo().alert().dismiss();
+                //System.out.println(driver.switchTo().alert().getText());
+            }
+        }
 
 
     }
