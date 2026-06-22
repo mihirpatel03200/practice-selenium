@@ -36,6 +36,7 @@ public class practice6 {
 
         WebElement table = driver.findElement(By.id("product"));
         System.out.println(table.findElements(By.tagName("tr")).size());
+        System.out.println(table.findElements(By.tagName("tr")).get(0).findElements(By.tagName("td")).size());
 
 
 
